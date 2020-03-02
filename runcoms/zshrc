@@ -13,7 +13,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-#export PATH="/usr/local/opt/node@10/bin:$PATH"
 eval `dircolors ~/.dir_colors`
 
 alias vi="nvim"
@@ -27,6 +26,20 @@ alias vim="nvim"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-. /usr/local/opt/asdf/asdf.sh
-
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+case `uname` in
+  Darwin)
+    # commands for OS X go here
+    echo "macos"
+    . /usr/local/opt/asdf/asdf.sh
+    . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+  ;;
+  Linux)
+    # commands for Linux go here
+    echo "linux"
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    . /home/linuxbrew/.linuxbrew/opt/asdf/asdf.sh
+  ;;
+  FreeBSD)
+    # commands for FreeBSD go here
+  ;;
+esac
