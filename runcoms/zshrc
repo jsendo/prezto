@@ -23,19 +23,23 @@ alias vim="nvim"
 # python
 #eval "$(pyenv init -)"
 #eval "$(pyenv virtualenv-init -)"
+#
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_DISABLE_RPROMPT=true
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_unique"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 case `uname` in
   Darwin)
     # commands for OS X go here
-    echo "macos"
     . /usr/local/opt/asdf/asdf.sh
     . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
   ;;
   Linux)
     # commands for Linux go here
-    echo "linux"
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     . /home/linuxbrew/.linuxbrew/opt/asdf/asdf.sh
   ;;
